@@ -67,7 +67,7 @@ class ResourceAllocator(object):
 			else:
 				self.TotalCPUCost += i[1]
 				TotalCPUQuantity[k] += i[0]
-		return TotalCPUQuantity.items()
+		return dict(TotalCPUQuantity.items())
 		
 	#**********************Method if only CPU alone is given without Price Mentioned****************#	
 	def getCpuForGivenPrice(self, region):
