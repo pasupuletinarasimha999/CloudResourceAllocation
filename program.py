@@ -5,28 +5,29 @@ locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
 class ResourceAllocator(object):
 	HOURS = 1
 	def __init__(self):
-
 		self.cpuWithQuantity = []
 		self.TotalCPUCost = 0
 		self.PreResult = {}
 		self.finalResult = []
 		self.server = server
 		self.maxCycleChecked = True
-
-	def get_costs(self, zones, cpus, price,hours = HOURS):
 		
+#*************************Calculation of Output based on the user provided Input***************************#
+	def get_costs(self, zones, cpus, price,hours = HOURS):
 		self.zones = zones
 		self.hours = hours
 		self.cpus = cpus
 		self.price = float(price)
 		self.cpuQty = 0
 		for region , v in self.zones.items():
-			self.PreResult["region"] 		= region
-			self.PreResult["servers"]		= self.getServers(region,v)
-			self.PreResult["total_cost"] 	= locale.currency(self.TotalCPUCost)
-			self.finalResult.append(self.PreResult)
+			self.PreResult["region"] = region
+			self.PreResult["servers"] = self.getServers(region,v)    #getservers method gets called to calculate the list cpu's used and region which are present
+			self.PreResult["total_cost"] = locale.currency(self.TotalCPUCost) # calculation of TotalCPUCost per region
+			self.finalResult.append(self.PreResult) # Appending the result per region to a list 
+			self.PreResult = {}
 		return self.finalResult
 
+#********************Method returns the CPU's and the number of CPU's required to full fill the user requirement with respect to Region*******//
 	def getServers(self, region, v):
 		self.cpuQty = 0
 		self.cpuWithQuantity = []
@@ -37,6 +38,7 @@ class ResourceAllocator(object):
 			self.getCpuForGivenPrice(region)
 		return self.getlistofservers()	
 
+#***********************Below method creates new list which contains the servertype,servercost and Quantity of CPU's*************#
 	def getTotalCPUQuantity(self, serverType, CpuQty, region):
 		if (self.cpus):
 			try:
@@ -49,7 +51,7 @@ class ResourceAllocator(object):
 			except Exception as error:
 				print(error)	
 	
-
+#************************Calculation of overall Total Cost per Region and Number of CPU's Required based on the list created fro above method*************************//
 	def getlistofservers(self):
 		self.TotalCPUCost = 0
 		TotalCPUQuantity = defaultdict(int)
@@ -67,7 +69,7 @@ class ResourceAllocator(object):
 				TotalCPUQuantity[k] += i[0]
 		return TotalCPUQuantity.items()
 		
-		
+	#**********************Method if only CPU alone is given without Price Mentioned****************#	
 	def getCpuForGivenPrice(self, region):
 		self.maxCycleChecked = True
 		while self.TotalCPUCost <= self.price and self.maxCycleChecked:
@@ -85,7 +87,7 @@ class ResourceAllocator(object):
 				except Exception as error:
 					print(error)
 			
-			self.getAggregateCpuQty()
+			self.getlistofservers()
 			if (count == 0 or self.TotalCPUCost == updatedCost):
 				self.maxCycleChecked= False
 
@@ -106,6 +108,13 @@ if __name__ == '__main__':
 			"8xlarge": 1.3,
 			"10xlarge": 2.97
 		},
+		"asia": {
+			"large": 0.11,
+			"xlarge": 0.20,
+			"4xlarge": 0.67,
+			"8xlarge": 1.18,
+		},
+			
 	}
 	server = [("large", 1), 
 		  ("xlarge", 2), 
