@@ -1,5 +1,6 @@
 from collections import defaultdict, OrderedDict
 import locale
+import json
 locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
 
 class ResourceAllocator(object):
@@ -128,5 +129,6 @@ if __name__ == '__main__':
 	price=float(input("Enter the Amount which you can afford:\t"))
 	obj1 =  ResourceAllocator()
 	print("\n===============================\n")
-	print(obj1.get_costs(zones, cpus, price,hours), "\n"*2)
+	d=obj1.get_costs(zones, cpus, price,hours)
+	print(json.dumps(d,sort_keys=True, indent=4))
 	print("\n===============================\n")
