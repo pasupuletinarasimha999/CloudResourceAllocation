@@ -1,0 +1,29 @@
+Enter the Number of Hours:      2                                                                                               
+Enter the Number of CPU's Required:     2                                                                                       
+Enter the Amount which you can afford:  15                                                                                      
+                                                                                                                                
+===============================                                                                                                 
+                                                                                                                                
+[                                                                                                                               
+    {                                                                                                                           
+        "region": "us-west",                                                                                                    
+        "servers": {                                                                                                            
+            "large": 2                                                                                                          
+        },                                                                                                                      
+        "total_cost": "$0.56"                                                                                                   
+    },                                                                                                                          
+    {                                                                                                                           
+        "region": "asia",                                                                                                       
+        "servers": {                                                                                                            
+            "xlarge": 1                                                                                                         
+        },                                                                                                                      
+        "total_cost": "$0.40"                                                                                                   
+    },                                                                                                                          
+    {                                                                                                                           
+        "region": "us-east",                                                                                                    
+        "servers": {                                                                                                            
+            "xlarge": 1                                                                                                         
+        },                                                                                                                      
+        "total_cost": "$0.46"                                                                                                   
+    }                                                                                                                           
+]                 
