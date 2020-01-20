@@ -1,0 +1,42 @@
+Enter the Number of Hours:      2                                                                                               
+Enter the Number of CPU's Required:     60                                                                                      
+Enter the Amount which you can afford:  45                                                                                      
+                                                                                                                                
+===============================                                                                                                 
+                                                                                                                                
+[                                                                                                                               
+    {                                                                                                                           
+        "region": "asia",                                                                                                       
+        "servers": {                                                                                                            
+            "4xlarge": 2,                                                                                                       
+            "8xlarge": 2,                                                                                                       
+            "large": 4,                                                                                                         
+            "xlarge": 4                                                                                                         
+        },                                                                                                                      
+        "total_cost": "$9.88"                                                                                                   
+    },                                                                                                                          
+    {                                                                                                                           
+        "region": "us-west",                                                                                                    
+        "servers": {                                                                                                            
+            "10xlarge": 1,                                                                                                      
+            "2xlarge": 1,                                                                                                       
+            "4xlarge": 1,                                                                                                       
+            "8xlarge": 1                                                                                                        
+        },                                                                                                                      
+        "total_cost": "$11.15"                                                                                                  
+    },                       
+	{                                                                                                                           
+        "region": "us-east",                                                                                                    
+        "servers": {                                                                                                            
+            "10xlarge": 1,                                                                                                      
+            "2xlarge": 1,                                                                                                       
+            "4xlarge": 1,                                                                                                       
+            "8xlarge": 1                                                                                                        
+        },                                                                                                                      
+        "total_cost": "$10.89"                                                                                                  
+    }                                                                                                                           
+]                                                                                                                               
+                                                                                                                                
+===============================                                                                                                 
+                                                                                                                                
+                                                   
